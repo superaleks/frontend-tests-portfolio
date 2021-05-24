@@ -1,0 +1,68 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        jcenter()
+    }
+    dependencies {
+        classpath("net.serenity-bdd:serenity-gradle-plugin:2.0.87")
+        classpath "net.serenity-bdd:serenity-emailer:2.0.87"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+
+//[serenitybdd] Required for "aggregate" task. Needed for reports generation.
+apply plugin: 'net.serenity-bdd.aggregator'
+
+group = 'serenitybdd-seed'
+version = '4.1.1'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    mavenLocal()
+    jcenter()
+}
+
+dependencies {
+
+    implementation group: 'net.serenity-bdd', name: 'serenity-cucumber', version:'1.9.48'
+    testImplementation 'net.serenity-bdd:serenity-core:2.0.87'
+    testImplementation 'net.serenity-bdd:serenity-junit:2.0.87'
+    testImplementation('org.assertj:assertj-core:3.14.0')
+    testImplementation('org.slf4j:slf4j-simple:1.7.29')
+    testImplementation('net.serenity-bdd:serenity-jira-plugin:1.12.0')
+    testImplementation('com.googlecode.lambdaj:lambdaj:2.3.3')
+}
+
+serenity {
+    reports = ["email"]
+}
+
+// Allow build to continue on test failure
+gradle.startParameter.continueOnFailure = true
+
+test {
+    systemProperties System.getProperties()
+    /* Show Serenity execution details: */
+    test.testLogging.showStandardStreams = true
+    /* Configuring Serenity reporting: */
+    test.reports.getHtml().enabled = false
+    test.reports.junitXml.enabled = false
+    /* Setting the desired Test Runner for the task: */
+    include 'frontendtests/test_runners/TestRunner.class'
+}
+
+
+test.reports.getHtml().enabled = false
+test.reports.junitXml.enabled =false
+
+wrapper {
+    gradleVersion = '6.0'
+}

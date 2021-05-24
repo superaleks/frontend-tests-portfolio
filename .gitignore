@@ -1,0 +1,43 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Java template
+*.class
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+/build
+/bin
+/.gradle
+/.allure
+/.idea
+/.settings
+/serenity_archetype.iml
+/out
+/serenity-portfolio-project.iml
+/target
+/.idea/workspace.xml
+/site/
+history/
+/browser-chrome.properties
+config.properties
+TestRunner_local.java
+
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+
