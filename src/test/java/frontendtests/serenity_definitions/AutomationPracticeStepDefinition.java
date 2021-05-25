@@ -37,6 +37,6 @@ public class AutomationPracticeStepDefinition {
             result = true;
         }
         assertTrue(result);
-        throw new PendingException();
+
     }
 }
