@@ -13,8 +13,15 @@ public class AutomationPractiseSteps extends ScenarioSteps {
     public void clickTheLoginLink() {
         basePage.clickTheLoginLink();
     }
+
     @Step("Verify if the create account button is present")
     public boolean checkIfAccountButtonIsPresent() {
          return basePage.checkIfAccountButtonIsPresent();
     }
+
+    @Step("Verify the presence of the Call us now number")
+    public String getCallUsNowNumber(String number) {
+        return basePage.getCallUsNowNumber(number);
+    }
+
 }

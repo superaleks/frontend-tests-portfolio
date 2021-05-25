@@ -36,6 +36,17 @@ public class BasePage extends PageObject {
       $(LOG_IN_LINK).click();
   }
 
+  public void clickGetSavingsNowButton() {
+      $(GET_SAVINGS_NOW_BUTTON).click();
+  }
+
+  public String getCallUsNowNumber(String number) {
+      System.out.println("The Call us now number is: " + $(CALL_US).getText());
+      String phoneNumber = $(CALL_US).getText();
+      return phoneNumber;
+  }
+
+
   public boolean checkIfAccountButtonIsPresent(){
       return $(CREATE_ACCOUNT_BUTTON).isPresent();
   }
