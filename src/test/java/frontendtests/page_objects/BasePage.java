@@ -30,8 +30,11 @@ public class BasePage extends PageObject {
       super(driver);
   }
 
-  public void clickTheLoginLink() {
+  public void navigateToTheHomePage() {
       open();
+  }
+
+  public void clickTheLoginLink() {
 
       $(LOG_IN_LINK).click();
   }
