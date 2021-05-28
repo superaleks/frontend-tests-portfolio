@@ -34,6 +34,7 @@ public class AutomationPracticeStepDefinition {
         if(step.getCallUsNowNumber(number).contains(number)) {
             result = true;
         }
+        System.out.println("Successfully obtainer the number:" + result);
         assertTrue(result);
 
     }
@@ -50,6 +51,12 @@ public class AutomationPracticeStepDefinition {
 
     @Then("^he can create an account succesfully$")
     public void heCanCreateAnAccountSuccesfully() {
+        boolean result = true;
+        if(step.errorMessageForAccountCreationIsPresent()) {
+            result = false;
+        }
+        System.out.println(result + " Successfull account creation!");
+        assertTrue(result);
 
     }
 

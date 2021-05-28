@@ -22,12 +22,19 @@ public class AccountCreationPage extends BasePage {
 
     public static final String SIGN_IN_BUTTON = "//button[@id='SubmitLogin']";
 
+    public static final String INVALID_EMAIL_ADDRESS_MESSAGE = "//div[@id='create_account_error']";
+
+
     public void navigateToTheAccountCreationPage() {
         open();
     }
 
     public void enterEmailIntoTheCreateAccountEmailInput(String email){
         $(CREATE_AN_ACCOUNT_EMAIL_ADDRESS_INPUT).type(email);
+    }
+
+    public boolean errorMessageForAccountCreationIsPresent() {
+        return $(INVALID_EMAIL_ADDRESS_MESSAGE).isDisabled();
     }
 
 

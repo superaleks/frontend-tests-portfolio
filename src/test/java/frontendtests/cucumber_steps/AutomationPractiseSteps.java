@@ -40,4 +40,9 @@ public class AutomationPractiseSteps extends ScenarioSteps {
     public void enterEmailIntoTheCreateAccountEmailInput(String email){
         accountCreationPage.enterEmailIntoTheCreateAccountEmailInput(email);
     }
+
+    @Step("Check for the presence of the account creation error message")
+    public boolean errorMessageForAccountCreationIsPresent() {
+        return accountCreationPage.errorMessageForAccountCreationIsPresent();
+    }
 }
