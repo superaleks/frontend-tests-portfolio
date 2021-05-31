@@ -1,46 +1,55 @@
 package frontendtests.page_objects;
 
-import net.thucydides.core.annotations.DefaultUrl;
+import com.github.javafaker.Faker;
 import org.openqa.selenium.WebDriver;
 
-@DefaultUrl("http://automationpractice.com/index.php?controller=authentication&back=my-account")
 public class AccountCreationPage extends BasePage {
 
     public AccountCreationPage(WebDriver driver) {
         super(driver);
     }
 
-    public static final String CREATE_AN_ACCOUNT_EMAIL_ADDRESS_INPUT = "//input[@id='email_create']";
+    public static final String MALE_TITLE_RADIO_BUTTON = "//label[@for='id_gender1']";
 
-    public static final String CREATE_AN_ACCOUNT_BUTTON = "//button[@id='SubmitCreate']";
+    public static final String FEMALE_TITLE_RADIO_BUTTON = "//label[@for='id_gender1']";
 
-    public static final String LOGIN_EMAIL_ADDRESS_INPUT = "//input[@id='email']";
+    public static final String FIRST_NAME_INPUT = "//input[@id='customer_firstname']";
 
-    public static final String LOGIN_PASSWORD_INPUT = "//input[@id='passwd']";
+    public static final String LAST_NAME_INPUT = "//input[@id='customer_lastname']";
 
-    public static final String FORGOT_YOUR_PASSWORD_LINK = "//a[@title='Recover your forgotten password']";
+    public static final String EMAIL_INPUT  = "//input[@id='email']";
 
-    public static final String SIGN_IN_BUTTON = "//button[@id='SubmitLogin']";
+    public static final String PASSWORD_INPUT = "//input[@id='passwd']";
 
-    public static final String INVALID_EMAIL_ADDRESS_MESSAGE = "//div[@id='create_account_error']";
+    public static final String SELECT_DAYS = "//select[@id='days']";
+
+    public static final String SELECT_MONTHS = "//select[@id='months']";
+
+    public static final String SELECT_YEARS = "//select[@id='years']";
+
+    public static final String NEWSLETTER_CHECKBOX = "//input[@id='newsletter']";
+
+    public static final String SPECIAL_OFFER_CHECKBOX = "//input[@id='optin']";
+
+    public static final String COMPANY_INPUT = "//input[@id='company']";
+
+    Faker faker = new Faker();
+    String name = faker.name().fullName(); // Miss Samanta Schmidt
+    String firstName = faker.name().firstName(); // Emory
+    String lastName = faker.name().lastName(); // Barton
+    String streetAddress = faker.address().streetAddress(); // 60018 Sawayn Brooks Suite 449
 
 
-    public void navigateToTheAccountCreationPage() {
-        open();
+    public void selectTheTitle(String title) {
+        if(title == "Mr"){
+        $(MALE_TITLE_RADIO_BUTTON).click();
+        }
+        else {
+            $(FEMALE_TITLE_RADIO_BUTTON).click();
+        }
     }
-
-    public void enterEmailIntoTheCreateAccountEmailInput(String email){
-       $(CREATE_AN_ACCOUNT_EMAIL_ADDRESS_INPUT).type(email);
+    public void enterTheFirstName() {
+        $(FIRST_NAME_INPUT).type(firstName);
     }
-
-    public void clickTheAccountCreationButton() {
-        $(CREATE_AN_ACCOUNT_BUTTON).click();
-
-    }
-
-    public boolean errorMessageForAccountCreationIsPresent() {
-        return $(INVALID_EMAIL_ADDRESS_MESSAGE).isDisplayed();
-    }
-
 
 }

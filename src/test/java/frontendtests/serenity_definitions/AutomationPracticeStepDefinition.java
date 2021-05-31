@@ -1,5 +1,7 @@
 package frontendtests.serenity_definitions;
 
+import cucumber.api.PendingException;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -50,8 +52,8 @@ public class AutomationPracticeStepDefinition {
         step.clickTheAccountCreationButton();
     }
 
-    @Then("^he can create an account succesfully$")
-    public void heCanCreateAnAccountSuccesfully() {
+    @Then("^he can initiate the account creation flow successfully$")
+    public void heCanInitiateTheAccountCreationFlowSuccessfully() {
         boolean result = true;
         if(step.errorMessageForAccountCreationIsPresent()) {
             result = false;
@@ -62,7 +64,30 @@ public class AutomationPracticeStepDefinition {
 
     @Then("^he sees an error message$")
     public void heSeesAnErrorMessage() {
-        System.out.println((step.errorMessageForAccountCreationIsPresent()) + " THIS NEEDS TO BE TRUE");
         assertTrue(step.errorMessageForAccountCreationIsPresent());
+    }
+
+    @When("^he enters the \"([^\"]*)\" to the account creation form and proceeds to the account creation$")
+    public void heEntersTheToTheAccountCreationFormAndProceedsToTheAccountCreation(String email) throws Throwable {
+        step.enterEmailIntoTheCreateAccountEmailInput(email);
+        step.clickTheAccountCreationButton();
+    }
+//
+//    @And("^he enters the \"([^\"]*)\", \"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\",\"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\"$")
+//    public void heEntersThe(String title, String firstName, String lastName, String password, String dateOfBirth, String company, String address, String city, String state, String postalCode, String country, String mobilePhone, String futureReferenceAddress)  {
+//        step.selectTheTitle(title);
+//        step.enterTheFirstName(firstName);
+//
+//    }
+
+    @Then("^he can succesfully create an account$")
+    public void heCanSuccesfullyCreateAnAccount() {
+    }
+
+
+    @And("^he enters all of the needed information$")
+    public void heEntersAllOfTheNeededInformation(String title) {
+        step.selectTheTitle(title);
+        step.enterTheFirstName();
     }
 }
