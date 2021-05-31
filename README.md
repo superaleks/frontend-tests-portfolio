@@ -1,9 +1,6 @@
 <!-- PROJECT LOGO -->
 <br/>
 <p align="left">
-<a href="">
-    <img src="images/flow.png" alt="Logo" width="100" height="100">
-  </a>
 <h3 align="center">Serenity BDD + Test Infrastructure Portfolio WORK IN PROGRESS</h3>
   <p align="left">
   This project has been created by Aleksandra L. for and practicing test automation.<br/>
