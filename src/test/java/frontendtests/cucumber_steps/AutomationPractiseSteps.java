@@ -56,6 +56,7 @@ public class AutomationPractiseSteps extends ScenarioSteps {
     @Step ("Select the title as: {0}")
     public void selectTheTitle(String title) {
         accountCreationPage.selectTheTitle(title);
+
     }
 
     @Step ("Enter the first name as: {0}")

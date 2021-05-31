@@ -1,6 +1,5 @@
 package frontendtests.serenity_definitions;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -84,10 +83,10 @@ public class AutomationPracticeStepDefinition {
     public void heCanSuccesfullyCreateAnAccount() {
     }
 
-
-    @And("^he enters all of the needed information$")
-    public void heEntersAllOfTheNeededInformation(String title) {
+    @And("^he enters the \"([^\"]*)\"$")
+    public void heEntersThe(String title)  {
         step.selectTheTitle(title);
         step.enterTheFirstName();
+
     }
 }

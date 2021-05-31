@@ -34,6 +34,7 @@ public class AccountCreationPage extends BasePage {
     public static final String COMPANY_INPUT = "//input[@id='company']";
 
     Faker faker = new Faker();
+    //String age = faker.name()
     String name = faker.name().fullName(); // Miss Samanta Schmidt
     String firstName = faker.name().firstName(); // Emory
     String lastName = faker.name().lastName(); // Barton
