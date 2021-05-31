@@ -20,4 +20,12 @@ Feature: Automation Practice
       | email                        |
       | aleksandravlukic@yopmail.com |
 
+  Scenario Outline: Try to create an account with a wrong email address
+    Given the user has navigated to the account creation page
+    When he enters the "<incorrectEmail>" to the account creation form
+    Then he sees an error message
+    Examples:
+      | incorrectEmail               |
+      | aleksandravlukic@yopmail     |
+
 

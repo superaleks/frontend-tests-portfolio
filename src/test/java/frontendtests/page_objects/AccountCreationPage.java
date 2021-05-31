@@ -30,11 +30,16 @@ public class AccountCreationPage extends BasePage {
     }
 
     public void enterEmailIntoTheCreateAccountEmailInput(String email){
-        $(CREATE_AN_ACCOUNT_EMAIL_ADDRESS_INPUT).type(email);
+       $(CREATE_AN_ACCOUNT_EMAIL_ADDRESS_INPUT).type(email);
+    }
+
+    public void clickTheAccountCreationButton() {
+        $(CREATE_AN_ACCOUNT_BUTTON).click();
+
     }
 
     public boolean errorMessageForAccountCreationIsPresent() {
-        return $(INVALID_EMAIL_ADDRESS_MESSAGE).isDisabled();
+        return $(INVALID_EMAIL_ADDRESS_MESSAGE).isDisplayed();
     }
 
 

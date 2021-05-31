@@ -47,6 +47,7 @@ public class AutomationPracticeStepDefinition {
     @When("^he enters the \"([^\"]*)\" to the account creation form$")
     public void heEntersTheToTheAccountCreationForm(String email) {
         step.enterEmailIntoTheCreateAccountEmailInput(email);
+        step.clickTheAccountCreationButton();
     }
 
     @Then("^he can create an account succesfully$")
@@ -57,9 +58,11 @@ public class AutomationPracticeStepDefinition {
         }
         System.out.println(result + " Successfull account creation!");
         assertTrue(result);
-
     }
 
-
-
+    @Then("^he sees an error message$")
+    public void heSeesAnErrorMessage() {
+        System.out.println((step.errorMessageForAccountCreationIsPresent()) + " THIS NEEDS TO BE TRUE");
+        assertTrue(step.errorMessageForAccountCreationIsPresent());
+    }
 }
