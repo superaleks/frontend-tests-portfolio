@@ -1,6 +1,6 @@
 package frontendtests.page_objects;
 
-import com.github.javafaker.Faker;
+import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 
 public class AccountCreationPage extends BasePage {
@@ -17,8 +17,6 @@ public class AccountCreationPage extends BasePage {
 
     public static final String LAST_NAME_INPUT = "//input[@id='customer_lastname']";
 
-    public static final String EMAIL_INPUT  = "//input[@id='email']";
-
     public static final String PASSWORD_INPUT = "//input[@id='passwd']";
 
     public static final String SELECT_DAYS = "//select[@id='days']";
@@ -33,13 +31,47 @@ public class AccountCreationPage extends BasePage {
 
     public static final String COMPANY_INPUT = "//input[@id='company']";
 
-    Faker faker = new Faker();
-    //String age = faker.name()
-    String name = faker.name().fullName(); // Miss Samanta Schmidt
-    String firstName = faker.name().firstName(); // Emory
-    String lastName = faker.name().lastName(); // Barton
-    String streetAddress = faker.address().streetAddress(); // 60018 Sawayn Brooks Suite 449
+    public static final String PASSWORD = "PASSWORD123!";
 
+    public static final String ADDRESS_LINE_1_INPUT = "//input[@name='address1']";
+
+    public static final String ADDRESS_LINE_2_INPUT = "//input[@name='address2']";
+
+    public static final String CITY_INPUT = "//input[@name='city']";
+
+    public static final String STATE_DROPDOWN =  "//select[@name='id_state']";
+
+    public static final String ZIP_CODE_INPUT = "//input[@id='postcode']";
+
+    public static final String COUNTRY_DROPDOWN = "//select[@name='id_country']";
+
+    public static final String ADDITIONAL_INFORMATION_TEXTAREA = "//textarea[@id='other']";
+
+    public static final String HOME_PHONE_INPUT = "//input[@id='phone']";
+
+    public static final String MOBILE_PHONE_INPUT = "//input[@id='phone_mobile']";
+
+    public static final String ADDRESS_ALIAS_INPUT = "//input[@id='alias']";
+
+    String firstName = faker.name().firstName();
+
+    String lastName = faker.name().lastName();
+
+    String company = faker.company().name();
+
+    String address = faker.address().streetAddress();
+
+    String city = faker.address().city();
+
+    String state = faker.address().state();
+
+    String zipCode = faker.address().zipCode();
+
+    String randomTextAdditionalInformation = faker.howIMetYourMother().catchPhrase();
+
+    String phone = faker.number().digits(8);
+
+    String addressAlias = faker.harryPotter().house();
 
     public void selectTheTitle(String title) {
         if(title == "Mr"){
@@ -53,4 +85,75 @@ public class AccountCreationPage extends BasePage {
         $(FIRST_NAME_INPUT).type(firstName);
     }
 
+    public void enterTheLastName(){
+        $(LAST_NAME_INPUT).type(lastName);
+    }
+
+    public void enterPassword() {
+        $(PASSWORD_INPUT).type(PASSWORD);
+    }
+    public void selectDateOfBirth() {
+        WebElementFacade daysDropdown = $(SELECT_DAYS);
+        WebElementFacade monthsDropdown = $(SELECT_MONTHS);
+        WebElementFacade yearsDropdown = $(SELECT_YEARS);
+        daysDropdown.selectByValue("17");
+        System.out.println("Aleks is born on day: " + daysDropdown.getSelectedValue());
+        monthsDropdown.selectByValue("1");
+        System.out.println("Aleks is born on month:" + monthsDropdown.getSelectedValue());
+        yearsDropdown.selectByValue("1993");
+        System.out.println("Aleks is born on year: " + yearsDropdown.getSelectedValue());
+    }
+
+    public void enterCompany() {
+        $(COMPANY_INPUT).type(company);
+    }
+
+    public void enterAddresses() {
+        $(ADDRESS_LINE_1_INPUT).type(address);
+        System.out.println("Address one is: " + address);
+        $(ADDRESS_LINE_2_INPUT).type(address);
+    }
+
+    public void enterCity(){
+        $(CITY_INPUT).type(city);
+        System.out.println("City is: " + city);
+    }
+
+    public void selectState(){
+        WebElementFacade daysDropdown = $(STATE_DROPDOWN);
+        daysDropdown.selectByVisibleText(state);
+        System.out.println("State is: " + state);
+
+    }
+
+    public void enterZipCode() {
+        $(ZIP_CODE_INPUT).type(zipCode);
+        System.out.println("Zipcode is:" + zipCode);
+    }
+
+    public void selectCountry(){
+        WebElementFacade countryDropdown = $(COUNTRY_DROPDOWN);
+        countryDropdown.selectByVisibleText("United States");
+        }
+
+    public void enterAdditionalInformation (){
+        $(ADDITIONAL_INFORMATION_TEXTAREA).type(randomTextAdditionalInformation);
+        System.out.println("Additional info is: " + randomTextAdditionalInformation);
+
+    }
+
+    public void enterHomePhone() {
+        $(HOME_PHONE_INPUT).type(phone);
+        System.out.println("Home Phone is: " + phone);
+    }
+
+    public void enterMobilePhone() {
+        $(MOBILE_PHONE_INPUT).type(phone);
+        System.out.println("Mobile phone is: "+ phone);
+    }
+
+    public void assignAnAddressAlias() {
+        $(ADDRESS_ALIAS_INPUT).type(addressAlias);
+        System.out.println("Address alias is: " + addressAlias);
+    }
 }
