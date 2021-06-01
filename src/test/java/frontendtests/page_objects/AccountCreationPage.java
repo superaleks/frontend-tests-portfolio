@@ -73,16 +73,13 @@ public class AccountCreationPage extends BasePage {
 
     String addressAlias = faker.harryPotter().house();
 
-    public void selectTheTitle(String title) {
-        if(title == "Mr"){
-        $(MALE_TITLE_RADIO_BUTTON).click();
-        }
-        else {
-            $(FEMALE_TITLE_RADIO_BUTTON).click();
-        }
+    public void selectTheTitle() {
+        $(FEMALE_TITLE_RADIO_BUTTON).click();
     }
+
     public void enterTheFirstName() {
         $(FIRST_NAME_INPUT).type(firstName);
+
     }
 
     public void enterTheLastName(){
@@ -97,11 +94,8 @@ public class AccountCreationPage extends BasePage {
         WebElementFacade monthsDropdown = $(SELECT_MONTHS);
         WebElementFacade yearsDropdown = $(SELECT_YEARS);
         daysDropdown.selectByValue("17");
-        System.out.println("Aleks is born on day: " + daysDropdown.getSelectedValue());
         monthsDropdown.selectByValue("1");
-        System.out.println("Aleks is born on month:" + monthsDropdown.getSelectedValue());
         yearsDropdown.selectByValue("1993");
-        System.out.println("Aleks is born on year: " + yearsDropdown.getSelectedValue());
     }
 
     public void enterCompany() {
@@ -110,20 +104,16 @@ public class AccountCreationPage extends BasePage {
 
     public void enterAddresses() {
         $(ADDRESS_LINE_1_INPUT).type(address);
-        System.out.println("Address one is: " + address);
         $(ADDRESS_LINE_2_INPUT).type(address);
     }
 
     public void enterCity(){
         $(CITY_INPUT).type(city);
-        System.out.println("City is: " + city);
     }
 
     public void selectState(){
         WebElementFacade daysDropdown = $(STATE_DROPDOWN);
         daysDropdown.selectByVisibleText(state);
-        System.out.println("State is: " + state);
-
     }
 
     public void enterZipCode() {
@@ -138,22 +128,17 @@ public class AccountCreationPage extends BasePage {
 
     public void enterAdditionalInformation (){
         $(ADDITIONAL_INFORMATION_TEXTAREA).type(randomTextAdditionalInformation);
-        System.out.println("Additional info is: " + randomTextAdditionalInformation);
-
     }
 
     public void enterHomePhone() {
         $(HOME_PHONE_INPUT).type(phone);
-        System.out.println("Home Phone is: " + phone);
     }
 
     public void enterMobilePhone() {
         $(MOBILE_PHONE_INPUT).type(phone);
-        System.out.println("Mobile phone is: "+ phone);
     }
 
     public void assignAnAddressAlias() {
         $(ADDRESS_ALIAS_INPUT).type(addressAlias);
-        System.out.println("Address alias is: " + addressAlias);
     }
 }

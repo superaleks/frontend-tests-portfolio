@@ -54,8 +54,8 @@ public class AutomationPractiseSteps extends ScenarioSteps {
     }
 
     @Step("Select the title as: {0}")
-    public void selectTheTitle(String title) {
-        accountCreationPage.selectTheTitle(title);
+    public void selectTheTitle() {
+        accountCreationPage.selectTheTitle();
     }
 
     @Step("Enter the first name")
@@ -96,6 +96,12 @@ public class AutomationPractiseSteps extends ScenarioSteps {
     @Step("Select the state")
     public void selectTheState () {
         accountCreationPage.selectState();
+    }
+
+    @Step ("Enter the postal code")
+        public void enterThePostalCode() {
+        accountCreationPage.enterZipCode();
+
     }
 
     @Step ("Select the country")

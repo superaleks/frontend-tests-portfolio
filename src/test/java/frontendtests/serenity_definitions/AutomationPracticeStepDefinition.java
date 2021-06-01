@@ -6,6 +6,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import frontendtests.cucumber_steps.AutomationPractiseSteps;
 import net.thucydides.core.annotations.Steps;
+import org.junit.Assert;
 
 import static org.junit.Assert.assertTrue;
 
@@ -57,7 +58,6 @@ public class AutomationPracticeStepDefinition {
         if(user.errorMessageForAccountCreationIsPresent()) {
             result = false;
         }
-        System.out.println(result + " Successfull account creation!");
         assertTrue(result);
     }
 
@@ -70,15 +70,17 @@ public class AutomationPracticeStepDefinition {
     public void heEntersTheEmailToTheAccountCreationFormAndProceedsToTheAccountCreation() {
         user.enterEmailIntoTheCreateAccountEmailInput();
         user.clickTheAccountCreationButton();
+
     }
 
     @Then("^he can succesfully create an account$")
-    public void heCanSuccesfullyCreateAnAccount() {
+    public void heCanSuccessfullyCreateAnAccount() {
+
     }
 
-    @And("^he enters the \"([^\"]*)\"$")
-    public void heEntersThe(String title)  {
-        user.selectTheTitle(title);
+    @And("^he enters the all the necessary data in the form, generated randomly$")
+    public void heEntersTheAllTheNecessaryDataInTheFormGeneratedRandomly() {
+        user.selectTheTitle();
         user.enterTheFirstName();
         user.enterTheLastName();
         user.enterThePassword();
@@ -87,13 +89,12 @@ public class AutomationPracticeStepDefinition {
         user.enterTheAddresses();
         user.enterTheCity();
         user.selectTheState();
+        user.enterThePostalCode();
         user.selectCountry();
         user.enterAdditionalInformation();
         user.enterHomePhone();
         user.enterMobilePhone();
         user.assignAddressAlias();
-
     }
-
 
 }
