@@ -5,8 +5,8 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import frontendtests.cucumber_steps.AutomationPractiseSteps;
+
 import net.thucydides.core.annotations.Steps;
-import org.junit.Assert;
 
 import static org.junit.Assert.assertTrue;
 
@@ -32,10 +32,7 @@ public class AutomationPracticeStepDefinition {
 
     @Then("^he can confirm that the \"([^\"]*)\" in the header is present$")
     public void heCanConfirmThatTheInTheHeaderIsPresent(String number)  {
-        boolean result = false;
-        if(user.getCallUsNowNumber(number).contains(number)) {
-            result = true;
-        }
+        boolean result = user.getCallUsNowNumber(number).contains(number);
         System.out.println("Successfully obtainer the number:" + result);
         assertTrue(result);
 
@@ -54,10 +51,7 @@ public class AutomationPracticeStepDefinition {
 
     @Then("^he can initiate the account creation flow successfully$")
     public void heCanInitiateTheAccountCreationFlowSuccessfully() {
-        boolean result = true;
-        if(user.errorMessageForAccountCreationIsPresent()) {
-            result = false;
-        }
+        boolean result = !user.errorMessageForAccountCreationIsPresent();
         assertTrue(result);
     }
 

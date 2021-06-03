@@ -25,7 +25,7 @@ public class LogInPage extends BasePage {
 
     public static final String INVALID_EMAIL_ADDRESS_MESSAGE = "//div[@id='create_account_error']";
 
-    String email = faker.internet().emailAddress();
+    final String email = faker.internet().emailAddress();
 
     public void navigateToTheAccountCreationPage() {
         open();

@@ -3,8 +3,6 @@ package frontendtests.page_objects;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.WebDriver;
-
-import java.lang.reflect.Array;
 import java.util.List;
 import java.util.stream.Collectors;
 

@@ -5,10 +5,6 @@ import org.openqa.selenium.WebDriver;
 
 public class AccountCreationPage extends BasePage {
 
-    public AccountCreationPage(WebDriver driver) {
-        super(driver);
-    }
-
     public static final String MALE_TITLE_RADIO_BUTTON = "//label[@for='id_gender1']";
 
     public static final String FEMALE_TITLE_RADIO_BUTTON = "//label[@for='id_gender1']";
@@ -53,25 +49,29 @@ public class AccountCreationPage extends BasePage {
 
     public static final String ADDRESS_ALIAS_INPUT = "//input[@id='alias']";
 
-    String firstName = faker.name().firstName();
+    final String firstName = faker.name().firstName();
 
-    String lastName = faker.name().lastName();
+    final String lastName = faker.name().lastName();
 
-    String company = faker.company().name();
+    final String company = faker.company().name();
 
-    String address = faker.address().streetAddress();
+    final String address = faker.address().streetAddress();
 
-    String city = faker.address().city();
+    final String city = faker.address().city();
 
-    String state = faker.address().state();
+    final String state = faker.address().state();
 
-    String zipCode = faker.address().zipCode();
+    final String zipCode = faker.address().zipCode();
 
-    String randomTextAdditionalInformation = faker.howIMetYourMother().catchPhrase();
+    final String randomTextAdditionalInformation = faker.howIMetYourMother().catchPhrase();
 
-    String phone = faker.number().digits(8);
+    final String phone = faker.number().digits(8);
 
-    String addressAlias = faker.harryPotter().house();
+    final String addressAlias = faker.harryPotter().house();
+
+    public AccountCreationPage(WebDriver driver) {
+        super(driver);
+    }
 
     public void selectTheTitle() {
         $(FEMALE_TITLE_RADIO_BUTTON).click();
