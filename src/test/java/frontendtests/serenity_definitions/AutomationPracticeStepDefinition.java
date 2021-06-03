@@ -5,6 +5,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import frontendtests.cucumber_steps.AutomationPractiseSteps;
+
 import net.thucydides.core.annotations.Steps;
 
 import static org.junit.Assert.assertTrue;
@@ -12,29 +13,26 @@ import static org.junit.Assert.assertTrue;
 public class AutomationPracticeStepDefinition {
 
     @Steps
-    AutomationPractiseSteps step;
+    AutomationPractiseSteps user;
 
     @Given("^the user has navigated to the homepage$")
     public void theUserHasNavigatedToTheHomepage() {
-        step.navigateToTheHomePage();
+        user.navigateToTheHomePage();
     }
 
     @When("^he navigates to the sign in form$")
     public void heNavigatesToTheSignInForm() {
-        step.clickTheLoginLink();
+        user.clickTheLoginLink();
     }
 
     @Then("^he will see the page where he can register or log in$")
     public void heWillSeeThePageWhereHeCanRegisterOrLogIn() {
-        assertTrue(step.checkIfAccountButtonIsPresent());
+        assertTrue(user.checkIfAccountButtonIsPresent());
     }
 
     @Then("^he can confirm that the \"([^\"]*)\" in the header is present$")
     public void heCanConfirmThatTheInTheHeaderIsPresent(String number)  {
-        boolean result = false;
-        if(step.getCallUsNowNumber(number).contains(number)) {
-            result = true;
-        }
+        boolean result = user.getCallUsNowNumber(number).contains(number);
         System.out.println("Successfully obtainer the number:" + result);
         assertTrue(result);
 
@@ -42,51 +40,55 @@ public class AutomationPracticeStepDefinition {
 
     @Given("^the user has navigated to the account creation page$")
     public void theUserHasNavigatedToTheAccountCreationPage() {
-        step.navigateToTheAccountCreationPage();
+        user.navigateToTheAccountCreationPage();
     }
 
     @When("^he enters the \"([^\"]*)\" to the account creation form$")
-    public void heEntersTheToTheAccountCreationForm(String email) {
-        step.enterEmailIntoTheCreateAccountEmailInput(email);
-        step.clickTheAccountCreationButton();
+    public void heEntersTheToTheAccountCreationForm() {
+        user.enterEmailIntoTheCreateAccountEmailInput();
+        user.clickTheAccountCreationButton();
     }
 
     @Then("^he can initiate the account creation flow successfully$")
     public void heCanInitiateTheAccountCreationFlowSuccessfully() {
-        boolean result = true;
-        if(step.errorMessageForAccountCreationIsPresent()) {
-            result = false;
-        }
-        System.out.println(result + " Successfull account creation!");
+        boolean result = !user.errorMessageForAccountCreationIsPresent();
         assertTrue(result);
     }
 
     @Then("^he sees an error message$")
     public void heSeesAnErrorMessage() {
-        assertTrue(step.errorMessageForAccountCreationIsPresent());
+        assertTrue(user.errorMessageForAccountCreationIsPresent());
     }
 
-    @When("^he enters the \"([^\"]*)\" to the account creation form and proceeds to the account creation$")
-    public void heEntersTheToTheAccountCreationFormAndProceedsToTheAccountCreation(String email) throws Throwable {
-        step.enterEmailIntoTheCreateAccountEmailInput(email);
-        step.clickTheAccountCreationButton();
+    @When("^he enters the email to the account creation form and proceeds to the account creation$")
+    public void heEntersTheEmailToTheAccountCreationFormAndProceedsToTheAccountCreation() {
+        user.enterEmailIntoTheCreateAccountEmailInput();
+        user.clickTheAccountCreationButton();
+
     }
-//
-//    @And("^he enters the \"([^\"]*)\", \"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\",\"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\", \"([^\"]*)\"$")
-//    public void heEntersThe(String title, String firstName, String lastName, String password, String dateOfBirth, String company, String address, String city, String state, String postalCode, String country, String mobilePhone, String futureReferenceAddress)  {
-//        step.selectTheTitle(title);
-//        step.enterTheFirstName(firstName);
-//
-//    }
 
     @Then("^he can succesfully create an account$")
-    public void heCanSuccesfullyCreateAnAccount() {
-    }
-
-    @And("^he enters the \"([^\"]*)\"$")
-    public void heEntersThe(String title)  {
-        step.selectTheTitle(title);
-        step.enterTheFirstName();
+    public void heCanSuccessfullyCreateAnAccount() {
 
     }
+
+    @And("^he enters the all the necessary data in the form, generated randomly$")
+    public void heEntersTheAllTheNecessaryDataInTheFormGeneratedRandomly() {
+        user.selectTheTitle();
+        user.enterTheFirstName();
+        user.enterTheLastName();
+        user.enterThePassword();
+        user.selectTheDayOfBirth();
+        user.selectTheCompany();
+        user.enterTheAddresses();
+        user.enterTheCity();
+        user.selectTheState();
+        user.enterThePostalCode();
+        user.selectCountry();
+        user.enterAdditionalInformation();
+        user.enterHomePhone();
+        user.enterMobilePhone();
+        user.assignAddressAlias();
+    }
+
 }

@@ -1,5 +1,6 @@
 package frontendtests.page_objects;
 
+import com.github.javafaker.Faker;
 import net.thucydides.core.annotations.DefaultUrl;
 import org.openqa.selenium.WebDriver;
 
@@ -24,12 +25,13 @@ public class LogInPage extends BasePage {
 
     public static final String INVALID_EMAIL_ADDRESS_MESSAGE = "//div[@id='create_account_error']";
 
+    final String email = faker.internet().emailAddress();
 
     public void navigateToTheAccountCreationPage() {
         open();
     }
 
-    public void enterEmailIntoTheCreateAccountEmailInput(String email){
+    public void enterEmailIntoTheCreateAccountEmailInput(){
        $(CREATE_AN_ACCOUNT_EMAIL_ADDRESS_INPUT).type(email);
     }
 

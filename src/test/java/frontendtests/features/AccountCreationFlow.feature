@@ -1,4 +1,4 @@
-Feature: Sign in page test
+Feature: Account creation flow test
 
   Scenario: Navigate to the sign in page
     Given the user has navigated to the homepage
@@ -12,32 +12,13 @@ Feature: Sign in page test
       | number             |
       | 0123-456-789       |
 
-  Scenario Outline: Initiate the account creation flow with the proper email address
+  Scenario: Initiate the account creation flow with the proper email address
     Given the user has navigated to the account creation page
-    When he enters the "<email>" to the account creation form
+    When he enters the email to the account creation form and proceeds to the account creation
     Then he can initiate the account creation flow successfully
-    Examples:
-      | email                        |
-      | aleksandralukic4@yopmail.com |
 
-  Scenario Outline: Initiate the account creation flow with an incorrectt email address
+  Scenario: Create an account with correct data
     Given the user has navigated to the account creation page
-    When he enters the "<incorrectEmail>" to the account creation form
-    Then he sees an error message
-    Examples:
-      | incorrectEmail               |
-      | aleksandravlukic@yopmail     |
-
-  Scenario Outline: Create an account with correct data
-    Given the user has navigated to the account creation page
-    When he enters the "<email>" to the account creation form and proceeds to the account creation
-    And he enters the "<title>"
-    #WIP"<lastName>","<password>","<dateOfBirth>", "<company", "<address>","<city>", "<state>", "<postalCode>", "<country>", "<mobilePhone>", "<futureReferenceAddress>"
+    When he enters the email to the account creation form and proceeds to the account creation
+    And he enters the all the necessary data in the form, generated randomly
     Then he can succesfully create an account
-    Examples:
-      | email                         | title |
-      | aleksandralukic6@yopmail.com  | Mrs   |
-
-
-
-

@@ -39,8 +39,8 @@ public class AutomationPractiseSteps extends ScenarioSteps {
     }
 
     @Step("Enter the email into the create account email input")
-    public void enterEmailIntoTheCreateAccountEmailInput(String email){
-        loginPage.enterEmailIntoTheCreateAccountEmailInput(email);
+    public void enterEmailIntoTheCreateAccountEmailInput(){
+        loginPage.enterEmailIntoTheCreateAccountEmailInput();
     }
 
     @Step("Try to create an account")
@@ -53,15 +53,79 @@ public class AutomationPractiseSteps extends ScenarioSteps {
         return loginPage.errorMessageForAccountCreationIsPresent();
     }
 
-    @Step ("Select the title as: {0}")
-    public void selectTheTitle(String title) {
-        accountCreationPage.selectTheTitle(title);
-
+    @Step("Select the title as: {0}")
+    public void selectTheTitle() {
+        accountCreationPage.selectTheTitle();
     }
 
-    @Step ("Enter the first name as: {0}")
+    @Step("Enter the first name")
     public void enterTheFirstName() {
         accountCreationPage.enterTheFirstName();
     }
 
+    @Step("Enter the last name: ")
+    public void enterTheLastName() {
+        accountCreationPage.enterTheLastName();
+    }
+
+    @Step("Enter the password")
+    public void enterThePassword() {
+        accountCreationPage.enterPassword();
+    }
+
+    @Step("Select the day of birth")
+    public void selectTheDayOfBirth(){
+        accountCreationPage.selectDateOfBirth();
+    }
+
+    @Step("Select the company")
+        public void selectTheCompany() {
+        accountCreationPage.enterCompany();
+    }
+
+    @Step("Enter the address")
+    public void enterTheAddresses(){
+        accountCreationPage.enterAddresses();
+    }
+
+    @Step("Enter the city")
+    public void enterTheCity() {
+        accountCreationPage.enterCity();
+    }
+
+    @Step("Select the state")
+    public void selectTheState () {
+        accountCreationPage.selectState();
+    }
+
+    @Step ("Enter the postal code")
+        public void enterThePostalCode() {
+        accountCreationPage.enterZipCode();
+
+    }
+
+    @Step ("Select the country")
+    public void selectCountry() {
+        accountCreationPage.selectCountry();
+    }
+
+    @Step("Enter additional information")
+    public void enterAdditionalInformation(){
+        accountCreationPage.enterAdditionalInformation();
+    }
+
+    @Step("Enter home phone")
+    public void enterHomePhone() {
+        accountCreationPage.enterHomePhone();
+    }
+
+    @Step ("Enter mobile phone")
+    public void enterMobilePhone (){
+        accountCreationPage.enterMobilePhone();
+    }
+
+    @Step("Assign address alias")
+    public void assignAddressAlias (){
+        accountCreationPage.assignAnAddressAlias();
+    }
 }

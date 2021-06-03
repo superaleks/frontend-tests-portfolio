@@ -1,8 +1,8 @@
 package frontendtests.test_runners;
 
+
 import cucumber.api.CucumberOptions;
 import net.serenitybdd.cucumber.CucumberWithSerenity;
-import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 
 //Default Test Runner. Used by the Gradle default "test" task.
