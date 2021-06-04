@@ -6,6 +6,8 @@ import frontendtests.page_objects.LogInPage;
 import frontendtests.page_objects.BasePage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.openqa.selenium.WebDriver;
+
 
 public class AutomationPractiseSteps extends ScenarioSteps {
 
@@ -127,5 +129,15 @@ public class AutomationPractiseSteps extends ScenarioSteps {
     @Step("Assign address alias")
     public void assignAddressAlias (){
         accountCreationPage.assignAnAddressAlias();
+    }
+
+    @Step("Click the register button")
+    public void clickTheRegisterButton() {
+        accountCreationPage.clickTheRegisterButton();
+    }
+
+    @Step("Verify that the usser created the account sucessfully")
+    public String myAccountWelcomeText() {
+      return accountCreationPage.myAccountWelcomeText();
     }
 }

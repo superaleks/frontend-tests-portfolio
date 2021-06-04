@@ -49,6 +49,10 @@ public class AccountCreationPage extends BasePage {
 
     public static final String ADDRESS_ALIAS_INPUT = "//input[@id='alias']";
 
+    public static final String REGISTER_BUTTON = "//button[@id='submitAccount']";
+
+    public static final String MY_ACCOUNT_WELCOME_TEXT = "//p[@class='info-account']";
+
     final String firstName = faker.name().firstName();
 
     final String lastName = faker.name().lastName();
@@ -61,7 +65,7 @@ public class AccountCreationPage extends BasePage {
 
     final String state = faker.address().state();
 
-    final String zipCode = faker.address().zipCode();
+    final String zipCode = "00000";
 
     final String randomTextAdditionalInformation = faker.howIMetYourMother().catchPhrase();
 
@@ -118,7 +122,6 @@ public class AccountCreationPage extends BasePage {
 
     public void enterZipCode() {
         $(ZIP_CODE_INPUT).type(zipCode);
-        System.out.println("Zipcode is:" + zipCode);
     }
 
     public void selectCountry(){
@@ -140,5 +143,14 @@ public class AccountCreationPage extends BasePage {
 
     public void assignAnAddressAlias() {
         $(ADDRESS_ALIAS_INPUT).type(addressAlias);
+    }
+
+    public void clickTheRegisterButton() {
+        $(REGISTER_BUTTON).click();
+    }
+
+    public String myAccountWelcomeText() {
+       return $(MY_ACCOUNT_WELCOME_TEXT).getText();
+
     }
 }

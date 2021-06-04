@@ -67,11 +67,6 @@ public class AutomationPracticeStepDefinition {
 
     }
 
-    @Then("^he can succesfully create an account$")
-    public void heCanSuccessfullyCreateAnAccount() {
-
-    }
-
     @And("^he enters the all the necessary data in the form, generated randomly$")
     public void heEntersTheAllTheNecessaryDataInTheFormGeneratedRandomly() {
         user.selectTheTitle();
@@ -90,5 +85,13 @@ public class AutomationPracticeStepDefinition {
         user.enterMobilePhone();
         user.assignAddressAlias();
     }
+
+    @Then("^he can succesfully create an account$")
+    public void heCanSuccessfullyCreateAnAccount() {
+        user.clickTheRegisterButton();
+        boolean result = user.myAccountWelcomeText().contains("Welcome");
+        assertTrue(result);
+    }
+
 
 }
